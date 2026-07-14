@@ -1,0 +1,171 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin": "0 0 0 0",
+    "spacing": 0,
+
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["custom/network_traffic", "custom/cheatsheet"],
+    "modules-right": ["clock#time", "backlight", "temperature", "cpu", "memory", "battery", "pulseaudio", "network", "custom/nixupdates", "tray", "idle_inhibitor", "custom/power"],
+
+    "custom/launcher": {
+        "format": "    ",
+        "on-click": "nwg-drawer -c 7 -is 70 -spacing 23",
+        "tooltip": false
+    },
+
+    "custom/cheatsheet": {
+        "format": "󰌌",
+        "on-click": "~/.config/hypr/scripts/keybind_cheatsheet.sh",
+        "tooltip-format": "Keybindings cheat-sheet  (Super+/)"
+    },
+
+    "custom/nixupdates": {
+        "exec": "~/.config/hypr/scripts/nix_updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "on-click": "~/.config/hypr/scripts/nix_updates.sh --open"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+            "focused": "",
+            "default": ""
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "icon": true,
+        "icon-size": 20,
+        "separate-outputs": true
+    },
+
+    "custom/network_traffic": {
+        "exec": "~/.config/waybar/scripts/network_traffic.sh",
+        "return-type": "json",
+        "format": "{}",
+        "format-ethernet": "{icon} {ifname} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}"
+    },
+
+    "clock#time": {
+        "format": "  {:%A  %d %b   %H:%M}",
+        "interval": 30,
+        "locale": "en_US.UTF-8",
+        "tooltip-format": "<span size='large'>{:%A, %B %d, %Y}</span>\n<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "left",
+            "format": {
+                "months":   "<span color='#88c0d0'><b>{}</b></span>",
+                "days":     "<span color='#d8dee9'>{}</span>",
+                "weeks":    "<span color='#a3be8c'><b>W{}</b></span>",
+                "weekdays": "<span color='#ebcb8b'><b>{}</b></span>",
+                "today":    "<span color='#bf616a'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "temperature": {
+        "thermal-zone": 0,
+        "critical-threshold": 85,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
+        "tooltip": true
+    },
+
+    "cpu": {
+        "format": "🖳 {usage}%",
+        "on-click": "foot -e htop"
+    },
+
+    "memory": {
+        "format": "🖴 {: >3}%",
+        "on-click": "foot -e htop"
+    },
+
+    "battery": {
+        "states": { "good": 95, "warning": 30, "critical": 15 },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged": "󰂅  {capacity}%",
+        "format-full": "󰁹  {capacity}%",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 3,
+        "format": "{icon}  {volume}%  {format_source}",
+        "format-bluetooth": "{icon}  {volume}%  {format_source}",
+        "format-bluetooth-muted": "󰝟  {icon}  {format_source}",
+        "format-muted": "󰝟  Muted  {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰖀", "󰕿", "󰕾"]
+        },
+        "on-click": "footclient -T waybar_alsamixer -e alsamixer -M",
+        "on-click-right": "pavucontrol"
+    },
+
+    "network": {
+        "format": "⚠Disabled",
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "⚠Disabled",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "family": "ipv4",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 4
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "on-click": "~/.config/hypr/scripts/idle_inhibitor.sh"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "nwgbar",
+        "tooltip": false
+    }
+}

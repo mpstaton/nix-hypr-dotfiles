@@ -1,0 +1,78 @@
+/*
+ * Shared wofi style — used by the Super-tap launcher AND the keybinding
+ * cheat-sheet (Super+/). Nord palette, bigger fonts + roomier padding.
+ * (Original had `rgba (` with a space, which GTK ignores — fixed to `rgba(`.)
+ */
+
+@define-color base10 #2E3440;
+@define-color base00 #3B4252;
+@define-color base02 #434C5E;
+@define-color base03 #4C566A;
+@define-color base04 #D8DEE9;
+@define-color base05 #E5E9F0;
+@define-color base06 #ECEFF4;
+@define-color base07 #8FBCBB;
+@define-color base08 #88C0D0;
+@define-color base09 #81A1C1;
+@define-color base0A #5E81AC;
+@define-color base0D #EBCB8B;
+@define-color base0E #A3BE8C;
+
+* {
+    font-family: "Ubuntu Mono", "JetBrainsMono Nerd Font", monospace;
+    font-size: 20px;
+}
+
+#window {
+    background-color: transparent;
+}
+
+#outer-box {
+    background-color: rgba(0,0,0,0.78);
+    border: 1px solid @base03;
+    border-radius: 14px;
+    /* top right bottom left — extra breathing room on left/top/bottom */
+    padding: 26px 22px 26px 30px;
+    box-shadow: 0px 0px 6px 2px #0F0F0F;
+}
+
+#input {
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0.6);
+    color: @base05;
+    margin: 0px 0px 16px 0px;   /* gap below the search field */
+    padding: 12px 14px;
+}
+
+#inner-box {
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+}
+
+#entry {
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin: 3px 2px;
+}
+
+#entry:selected {
+    background-color: rgba(136,192,208,0.22);   /* Nord frost highlight */
+}
+
+#text {
+    color: @base04;
+    background-color: transparent;
+}
+
+#text:selected {
+    color: @base08;
+}
+
+#img {
+    background-color: transparent;
+    margin-right: 10px;
+}

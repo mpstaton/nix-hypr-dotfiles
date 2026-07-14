@@ -1,0 +1,7 @@
+# Ghostty config — must be named exactly "config" (no extension) to be loaded.
+theme = carbonfox
+background-opacity = 0.6
+background-blur = 40
+font-family = Menlo
+font-size = 14
+adjust-cursor-thickness = 12

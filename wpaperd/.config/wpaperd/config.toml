@@ -1,0 +1,6 @@
+# wpaperd wallpaper daemon config. Swap `path` to any image (or a folder
+# to cycle). `[default]` applies to every monitor; add [eDP-1] / [DP-3]
+# sections to override per screen.
+[default]
+path = "~/Pictures/Wallpapers/MilkyWay.png"
+mode = "stretch"
