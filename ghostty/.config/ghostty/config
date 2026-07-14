@@ -3,5 +3,6 @@ theme = carbonfox
 background-opacity = 0.6
 background-blur = 40
 font-family = Menlo
-font-size = 14
+font-size = 16
+adjust-cell-height = 10%
 adjust-cursor-thickness = 12
