@@ -1,2 +1,9 @@
 .DS_Store
 *.swp
+
+# home-manager writes this one as a symlink into /nix/store. Because
+# ~/.config/hypr is itself a symlink into this repo, HM's file lands inside
+# the working tree. Do not commit it — a store path is machine-local and
+# meaningless on a fresh clone. The real source is services.hypridle in
+# nixos-hypr-config/home/mps/home.nix.
+hypr/.config/hypr/hypridle.conf
